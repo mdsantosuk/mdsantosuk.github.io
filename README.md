@@ -1,1 +1,1 @@
-mdsantosuk.github.io/fm2junior
+mdsantosuk.github.io
