@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Frontend Mentor | Browser extensions manager UI</title>
+</head>
+<body>
+    <main>
+        <header class="extensions-header">
+            <div class="header-left">
+                <div class="header-logo">
+                    <div class="logo-crop">
+                        <img src="./assets/images/logo.svg" alt="Extensions logo" class="header-img">                
+                    </div>                  
+                </div>
+                <h1 class="header-title">Extensions</h1>
+            </div>
+            <div class="header-actions">
+                <button id="themeToggle" aria-label="Toggle theme">
+                    <img id="moonIcon" src="./assets/images/icon-moon.svg" alt="Dark mode">
+                    <img id="sunIcon" src="./assets/images/icon-sun.svg" alt="Light mode" style="display:none;">
+                </button>
+            </div>
+        </header>
+        <div class="section-header">
+            <h1 class="section-title">Extensions List</h1>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="active">Active</button>
+                <button class="filter-btn" data-filter="inactive">Inactive</button>
+            </div>
+        </div>
+        <div id="extensionsGrid"></div>
+    </main>
+    <div class="attribution">
+         Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>. 
+         Coded by <a href="#">Michel Dos Santos</a>.
+    </div>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
