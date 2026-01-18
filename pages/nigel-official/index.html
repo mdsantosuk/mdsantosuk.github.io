@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nigel Uniformes - Qualidade Superior em Uniformes Escolares e Profissionais</title>
+    <meta name="description" content="Empresa familiar com mais de 20 anos de experiência em uniformes escolares e profissionais. Qualidade, conforto e atendimento personalizado." />
+    <meta name="author" content="Nigel Uniformes" />
+    
+    <meta property="og:title" content="Nigel Uniformes - Qualidade Superior em Uniformes" />
+    <meta property="og:description" content="Empresa familiar com mais de 20 anos de experiência em uniformes escolares e profissionais. Qualidade, conforto e atendimento personalizado." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@lovable_dev" />
+    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+
+    <!--=============== FAVICON =============-->
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="header">
+        <div class="container">
+            <div class="header-content">
+
+
+                <a href="#home" class="nav-brand" alt="Logo">
+                    <img src="./assets/img/logo_only.png" alt="Nigel Uniformes Logo" class="logo">
+                    <h1 class="nav-title">N I G E L</h1>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="nav-desktop">
+                    <button onclick="scrollToSection('home')" class="nav-item">Início</button>
+                    <button onclick="scrollToSection('sobre')" class="nav-item">Sobre</button>
+                    <button onclick="scrollToSection('produtos')" class="nav-item">Produtos</button>
+                    <button onclick="scrollToSection('contato')" class="nav-item">Contato</button>
+                    <button onclick="scrollToSection('faq')" class="nav-item">FAQ</button>
+                    <button onclick="scrollToSection('reviews')" class="nav-item">Reviews</button>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <nav id="mobile-nav" class="nav-mobile">
+                <button onclick="scrollToSection('home')" class="nav-item-mobile">Início</button>
+                <button onclick="scrollToSection('sobre')" class="nav-item-mobile">Sobre</button>
+                <button onclick="scrollToSection('produtos')" class="nav-item-mobile">Produtos</button>
+                <button onclick="scrollToSection('contato')" class="nav-item-mobile">Contato</button>
+                <button onclick="scrollToSection('faq')" class="nav-item-mobile">FAQ</button>
+                <button onclick="scrollToSection('reviews')" class="nav-item-mobile">Reviews</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <img src="./assets/img/product14.png" alt="Uniforme Polo" loading="lazy">
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    Tradição em uniformes há mais de 20 anos
+                </div>
+                
+                <h1 class="hero-title">
+                    Uniformes de <span class="text-primary">Qualidade</span><br>
+                    Feitos com <span class="text-primary">Excelência</span>
+                </h1>
+                
+                
+                <div class="hero-buttons">
+                    <button onclick="scrollToSection('produtos')" class="btn btn-primary">
+                        Ver Produtos
+                    </button>
+                    <button onclick="scrollToSection('contato')" class="btn btn-secondary">
+                        Solicitar Orçamento
+                    </button>
+                </div>
+                
+
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+            <a href="https://instagram.com/nigeluniformes" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://facebook.com/nigeluniformes" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+            </a>
+            <a href="https://wa.me/5543999999999" target="_blank" class="social-link">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.465 3.488"/></svg>
+            </a>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="about">
+        <div class="container">
+
+            <!-- About Content -->
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="section-title">Nossa <span class="text-primary">História</span></h2>
+                    <p class="about-description">
+                        A Nigel Uniformes nasceu do sonho de uma família apaixonada por qualidade e excelência. 
+                        Com mais de duas décadas de experiência, construímos uma reputação sólida baseada na 
+                        confiança, qualidade superior e atendimento personalizado que nossos clientes merecem.
+                    </p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+                            <span>Tecidos de alta qualidade e durabilidade</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+                            <span>Bordados e estampas personalizadas</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+                            <span>Atendimento especializado e consultivo</span>
+                        </div>
+                        <div class="benefit-item">
+                            <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20,6 9,17 4,12"/></svg>
+                            <span>Prazos de entrega confiáveis</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Features Grid -->
+                <div class="about-photo">
+
+
+
+
+                </div>               
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-label">Clientes Atendidos</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Tipos de Uniformes</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfação Garantida</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="produtos" class="products">
+        <div class="container">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/img/product13.png" alt="Uniforme Polo" loading="lazy">
+                </div>
+                <div class="product-content">
+                    <h2 class="section-title">Nossos <span class="text-primary">Produtos</span></h2>
+                    <h3 class="product-title">Uniformes Profissionais Personalizados</h3>
+                    <p class="product-description">
+                        Oferecemos uma linha completa de uniformes para diferentes segmentos, 
+                    sempre com foco na qualidade, conforto e durabilidade.
+                    </p>
+                    <div class="product-features">
+                        <span class="feature-tag">Tecido Respirável</span>
+                        <span class="feature-tag">Anti-pilling</span>
+                        <span class="feature-tag">Bordado Personalizado</span>
+                        <span class="feature-tag">100% Personalizado</span>
+                        <span class="feature-tag">Design Exclusivo</span>
+                        <span class="feature-tag">Consultoria Gratuita</span>                            
+                        <span class="feature-tag">Sob Medida</span>
+                        <span class="feature-tag">Tecidos Técnicos</span>
+                        <span class="feature-tag">Certificação</span>                            
+                    </div> 
+                    <div class="product-button">
+                        <button onclick="scrollToSection('contato')" class="btn btn-primary">
+                            Solicitar Orçamento
+                        </button>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contato" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Entre em <span class="text-primary">Contato</span></h2>
+                <p class="section-subtitle">
+                    Estamos aqui para ajudar você a encontrar a solução perfeita em uniformes. 
+                    Fale conosco e descubra como podemos atender suas necessidades.
+                </p>
+            </div>
+
+            <div class="contact-content">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3 class="contact-info-title">Informações de Contato</h3>
+                    <p class="contact-info-description">
+                        Nossa equipe está pronta para atender você com excelência e agilidade.
+                    </p>
+
+                    <div class="contact-cards">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Telefone</h4>
+                                <p>(43) 99999-9999</p>
+                                <p>(43) 3333-4444</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>contato@nigeluniformes.com.br</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div class="contact-details">
+                                <h4>Endereço</h4>
+                                <p>Rua das Flores, 123</p>
+                                <p>Mandaguari - PR</p>
+                                <p>CEP: 86975-000</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <div class="contact-form-card">
+                        <h3 class="form-title">Envie sua Mensagem</h3>
+                        
+                        <form id="contact-form" class="contact-form">
+                            <div class="form-group-row">
+                                <div class="form-group">
+                                    <label for="name">Nome *</label>
+                                    <input type="text" id="name" name="name" required placeholder="Seu nome completo">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email *</label>
+                                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Assunto *</label>
+                                <input type="text" id="subject" name="subject" required placeholder="Assunto da sua mensagem">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensagem *</label>
+                                <textarea id="message" name="message" required rows="6" placeholder="Conte-nos sobre seu projeto ou necessidade..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <span class="btn-text">Enviar Mensagem</span>
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22,2 15,22 11,13 2,9 22,2"/></svg>
+                            </button>
+                        </form>
+
+                        <!-- Success Message -->
+                        <div id="success-message" class="success-message">
+                            <div class="success-icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9 9 4.03 9 9z"/></svg>
+                            </div>
+                            <h4>Mensagem enviada com sucesso!</h4>
+                            <p>Entraremos em contato em breve. Obrigado!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Perguntas <span class="text-primary">Frequentes</span></h2>
+                <p class="section-subtitle">
+                    Tire suas dúvidas sobre nossos produtos e serviços. 
+                    Se não encontrar sua resposta, entre em contato conosco.
+                </p>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item" data-faq="0">
+                    <button class="faq-question">
+                        <span>Qual é o prazo de entrega dos uniformes?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>O prazo de entrega varia de 7 a 15 dias úteis, dependendo da quantidade e complexidade do pedido. Para pedidos personalizados, o prazo pode ser de até 20 dias úteis. Sempre informamos o prazo exato no momento do orçamento.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="1">
+                    <button class="faq-question">
+                        <span>Como faço para solicitar um orçamento?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Você pode solicitar um orçamento através do nosso formulário online, por WhatsApp ou telefone. Informe detalhes como quantidade, tamanhos, especificações desejadas e prazo. Nossa equipe retornará rapidamente com uma proposta personalizada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="2">
+                    <button class="faq-question">
+                        <span>Vocês trabalham com bordados personalizados?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Sim! Oferecemos serviços de bordado e estampa personalizados. Podemos incluir logotipos, nomes, símbolos e outros elementos conforme sua necessidade. Trabalhamos com diversas técnicas para garantir a melhor qualidade e durabilidade.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="3">
+                    <button class="faq-question">
+                        <span>Qual é a política de troca e devolução?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Aceitamos trocas em até 30 dias após a entrega, desde que os produtos estejam em perfeito estado, sem uso e com etiquetas. Para uniformes personalizados, avaliamos caso a caso. Defeitos de fabricação são trocados sem custo adicional.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="4">
+                    <button class="faq-question">
+                        <span>Quais tecidos vocês utilizam?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Utilizamos tecidos de alta qualidade, incluindo algodão, poliéster, misto (algodão/poliéster) e tecidos técnicos. A escolha do tecido depende do tipo de uniforme e uso pretendido. Todos os materiais são selecionados para garantir conforto, durabilidade e facilidade de manutenção.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item" data-faq="5">
+                    <button class="faq-question">
+                        <span>Fazem entrega em toda região?</span>
+                        <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 12,15 18,9"/></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-content">
+                            <p>Sim, atendemos toda a região de Mandaguari e cidades próximas. Para outras localidades, trabalhamos com transportadoras confiáveis. O frete é calculado conforme a distância e quantidade do pedido. Consulte-nos para mais informações sobre sua região.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ CTA -->
+            <div class="faq-cta">
+                <div class="faq-badge">
+                    <span class="badge-dot"></span>
+                    Ainda tem dúvidas?
+                </div>
+                <p>Nossa equipe está pronta para esclarecer qualquer questão sobre nossos produtos e serviços.</p>
+                <button onclick="scrollToSection('contato')" class="btn btn-primary">
+                    Falar Conosco
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">O que nossos <span class="text-primary">clientes dizem</span></h2>
+                <p class="section-subtitle">
+                    Confira abaixo algumas avaliações de quem já confiou no nosso trabalho 
+                    e conheça a experiência de quem veste qualidade, conforto e compromisso.
+                </p>
+            </div>
+
+            <div class="reviews-carousel">
+                <div class="carousel-container">
+                    <div id="reviews-track" class="carousel-track">
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-01.png" alt="Eng. Fabiano Dutra">
+                                </div>
+                                <h3 class="reviewer-name">Eng. Fabiano Dutra</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "Always excellent service, my uniforms are made to perfection. Product quality and durability are key words for the company, in addition to punctuality in delivery and transparency."
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-02.png" alt="Maria Alice Gonçalves">
+                                </div>
+                                <h3 class="reviewer-name">Maria Alice Gonçalves</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "The shirt came in great condition, the fabric is excellent, perfect!"
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-03.png" alt="Aylla Trajano">
+                                </div>
+                                <h3 class="reviewer-name">Aylla Trajano</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "Beautiful clothes... wonderful and comfortable fabric. Beautiful design. I highly recommend it! Top service, nothing but praise!"
+                                </blockquote>
+                            </div>
+                        </div>
+
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-04.png" alt="Aylla Trajano">
+                                </div>
+                                <h3 class="reviewer-name">João Vitor</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "Beautiful clothes... wonderful and comfortable fabric. Beautiful design. I highly recommend it! Top service, nothing but praise!"
+                                </blockquote>
+                            </div>
+                        </div>
+                            
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-05.png" alt="Aylla Trajano">
+                                </div>
+                                <h3 class="reviewer-name">Jacqueline Ozelin</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "Beautiful clothes... wonderful and comfortable fabric. Beautiful design. I highly recommend it! Top service, nothing but praise!"
+                                </blockquote>
+                            </div>
+                        </div>
+                            
+                        <div class="review-slide">
+                            <div class="review-card">
+                                <div class="reviewer-image">
+                                    <img src="./assets/img/review-user-06.png" alt="Aylla Trajano">
+                                </div>
+                                <h3 class="reviewer-name">Luana Tozzo Rocha</h3>
+                                <div class="review-rating">
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                    <svg class="star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26 12,2"/></svg>
+                                </div>
+                                <blockquote class="review-text">
+                                    "Beautiful clothes... wonderful and comfortable fabric. Beautiful design. I highly recommend it! Top service, nothing but praise!"
+                                </blockquote>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Buttons -->
+                <button class="carousel-btn carousel-btn-prev" onclick="previousReview()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
+                </button>
+                <button class="carousel-btn carousel-btn-next" onclick="nextReview()">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9,18 15,12 9,6"/></svg>
+                </button>
+
+                <!-- Dots Indicator -->
+                <div class="carousel-dots">
+                    <button class="dot active" onclick="goToReview(0)"></button>
+                    <button class="dot" onclick="goToReview(1)"></button>
+                    <button class="dot" onclick="goToReview(2)"></button>
+                    <button class="dot" onclick="goToReview(3)"></button>
+                    <button class="dot" onclick="goToReview(4)"></button>
+                    <button class="dot" onclick="goToReview(5)"></button>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="reviews-stats">
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Clientes Satisfeitos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="stat-label">Avaliação Média</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">20+</div>
+                    <div class="stat-label">Anos de Experiência</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                
+                <!-- Brand Section -->
+                <div class="footer-links-logo">
+                    <div class="footer-brand">
+                        <img src="./assets/img/logo_only.png" alt="Nigel Uniformes Logo" class="footer-logo">                        
+                        <h1 class="footer-tittle">N I G E L</h1>
+                    </div>
+                </div>
+
+
+
+
+                <!-- Products -->
+                <div class="footer-links">
+                    <h4 class="footer-title">Social</h4>
+                    <ul class="footer-nav">
+                        <li><a href="https://instagram.com/nigeluniformes" target="_blank">Instagram</a></li>
+                        <li><a href="https://facebook.com/nigeluniformes" target="_blank" >Facebook</a></li>
+                        <li><a href="https://wa.me/5543999999999" target="_blank">WhatsApp</a></li>
+                    </ul>
+                </div>
+
+
+                
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h4 class="footer-title">Contato</h4>
+                    <div class="contact-info-item">                    
+                        <div>
+                            <p>Rua das Flores, 123</p>
+                            <p>Mandaguari - PR, CEP: 86975-000</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div>
+                            <p>(43) 99999-9999</p>
+                            <p>(43) 3333-4444</p>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <p>contato@nigeluniformes.com.br</p>
+                    </div>
+                </div>
+            </div>
+       
+           
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Nigel Uniformes. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
