@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+    <title>Michel Dos Santos - Front-End Developer</title>
+    <meta name="description" content="A Front End Web Developer passionate about creating interactive applications and experiences on the web." />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.lineicons.com/2.0/LineIcons.css">
+    <link rel="stylesheet" href="styles/styles.css">    
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="assets/images/logo__.png" class="logo-circle" alt="A picture of logo.">
+                <span>Michel Dos Santos</span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="lni lni-night"></i>
+                </button>
+                <button class="btn-join">Join Now</button>
+            </div>
+            <div class="mobile-toggle" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-image">
+                <img src="assets/images/me.jpg" alt="Michel Dos Santos">
+            </div>
+            <div class="hero-content">
+                <h1 class="serif">Journey Through Web Development</h1>
+                <p class="subtitle">Welcome to my portfolio: A showcase of creativity, innovation, and craftsmanship. Where code meets design and ideas transform into interactive experiences.</p>
+                <div class="hero-actions">
+                    <a href="#contact" class="btn-hero">Get in Touch</a>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/michel-dos-santos-a0389b89/" target="_blank" rel="noopener noreferrer">
+                            <i class="lni lni-linkedin-original"></i>
+                        </a>
+                        <a href="https://github.com/mdsantosuk" target="_blank" rel="noopener noreferrer">
+                            <i class="lni lni-github-original"></i>
+                        </a>
+                        <a href="mailto:mdsantosuk@gmail.com">
+                            <i class="lni lni-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="about-container">
+            <h2 class="serif">A space for exploring ideas, finding inspiration, and discovering new ways of building</h2>
+            <p>From mindful coding and personal growth to web development and creative pursuits, I share perspectives that enrich the digital landscape. Join me as I explore topics that inspire innovation and meaningful creation.</p>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section" id="projects">
+        <div class="projects-container">
+            <div class="section-header">
+                <h2 class="serif">Featured Projects</h2>
+                <a href="#" class="view-all">View all →</a>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="assets/images/revolution.png" alt="Revolution Speciality Food">
+                        <div class="project-tags">
+                            <span class="tag food">Food</span>
+                        </div>
+                        <div class="project-date">2024</div>
+                    </div>
+                    <div class="project-card-content">
+                        <div class="project-number">001</div>
+                        <h3 class="serif">
+                            Revolution Food
+                            <span class="arrow-icon">↗</span>
+                        </h3>
+                        <p>Landing page for a family business, showcasing their specialty food products and company story.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="assets/images/nigel.png" alt="Nigel Uniformes">
+                        <div class="project-tags">
+                            <span class="tag business">Business</span>
+                        </div>
+                        <div class="project-date">2024</div>
+                    </div>
+                    <div class="project-card-content">
+                        <div class="project-number">002</div>
+                        <h3 class="serif">
+                            Nigel Uniformes
+                            <span class="arrow-icon">↗</span>
+                        </h3>
+                        <p>Clean and simple website for a family business, displaying all company information elegantly.</p>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-card-image">
+                        <img src="assets/images/tech-finds.png" alt="TECHFINDS Hub">
+                        <div class="project-tags">
+                            <span class="tag tech">Tech</span>
+                        </div>
+                        <div class="project-date">2025</div>
+                    </div>
+                    <div class="project-card-content">
+                        <div class="project-number">003</div>
+                        <h3 class="serif">
+                            TECHFINDS Hub
+                            <span class="arrow-icon">↗</span>
+                        </h3>
+                        <p>Tech recommendations platform helping visitors find and choose better tech products.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills-section" id="skills">
+        <div class="skills-container">
+            <div class="section-header">
+                <h2 class="serif">Technical Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <img src="assets/skills/html.svg" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/css.svg" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/mysql.svg" alt="MySQL">
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/vscode.svg" alt="VS Code">
+                    <p>VS Code</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/linux.svg" alt="Linux">
+                    <p>Linux</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/django.png" alt="Django">
+                    <p>Django</p>
+                </div>
+                <div class="skill-card">
+                    <img src="assets/skills/python.png" alt="Python">
+                    <p>Python</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="contact-container">
+            <h2 class="serif">Stay inspired.</h2>
+            <p class="subtitle">Let's connect and create something amazing together. Reach out through your preferred channel.</p>
+            <div class="contact-methods">
+                <div class="contact-method">
+                    <i class="lni lni-envelope"></i>
+                    <a href="mailto:mdsantosuk@gmail.com">mdsantosuk@gmail.com</a>
+                    <p>Email Me</p>
+                </div>
+                <div class="contact-method">
+                    <i class="lni lni-phone"></i>
+                    <a href="tel:+44">Contact Number</a>
+                    <p>Call or Text</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Explore</h3>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="https://www.linkedin.com/in/michel-dos-santos-a0389b89/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/mdsantosuk" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:mdsantosuk@gmail.com">Email</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Style Guide</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Michel Dos Santos. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="scripts/main.js"></script>
+    
+</body>
+</html>
