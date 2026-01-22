@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ParseInbox - Focuses on parsing inbox messages for relevant details</title>
+  <style>
+    :root{
+      --bg: #eceff6;
+      --panel: #ffffff;
+      --border: #e6e2e2;
+      --text: #111;
+      --muted: #555;
+      --white: #fff;
+      --blue: #7e9bf9;
+      --title: #545171;
+      --input: #fcfcff;
+      --btn: #545171;
+    }
+
+    *{ 
+      box-sizing: border-box; 
+      font-family: Segoe UI, Tahoma, Arial, sans-serif; 
+    }
+    
+    body{ 
+      margin:0; 
+      background: var(--bg); 
+      color: var(--text); 
+    }
+
+    .window{
+      width: min(1200px, 90vw);
+      margin: 0.875rem auto;
+      padding: 0.5rem;
+    }
+
+    input {
+      background: var(--panel);
+      border: none;
+    }
+
+    .app{
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 0.875rem;
+      align-items: start;
+    }
+
+    header {
+      display: block;
+      unicode-bidi: isolate;
+    }
+
+    .app-header {
+      text-align: center;
+      margin-bottom: 0.5rem;
+      padding: 0;
+    }
+
+    .app-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+    }
+
+    p.app-subtitle{
+      margin: 0;
+    }
+
+    .app-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--title);        
+    }  
+
+    h1.app-title {
+      margin: 0;
+    }
+
+    .left, .right{ 
+      min-height: 80vh; 
+    }
+
+    .left{
+      background: transparent;
+      padding: 0.45rem;
+      border-radius: 0.9375rem;
+    }
+
+    .left h2{
+      margin: 0.45rem 0 0.625rem;
+      text-align: center;
+      font-size: 0.9375rem;
+      font-weight: 500;
+    }
+
+    .box{
+      border-bottom-left-radius: 0.9375rem;
+      border-bottom-right-radius: 0.9375rem;
+      background: var(--white);
+      padding: 0.625rem;
+      border: 1px solid var(--border);
+    }
+
+    #emailInput{
+      width: 100%;
+      height: calc(75vh - 6.85rem);
+      border: 1px solid var(--border);
+      background: var(--input);
+      padding: 0.625rem;
+      resize: none;
+      outline: none;
+      font-size: 0.75rem;
+      line-height: 1.35;
+      white-space: pre-wrap;
+      border-radius: 0.75rem;
+    }
+
+    .left-actions{
+      display: flex;
+      justify-content: center;
+      margin-top: 0.75rem;
+    }
+
+    .right{
+      padding: 0.45rem;
+      position: relative;
+    }
+
+    .panel{
+      border: 1px solid var(--border);
+      background: var(--panel);
+      margin-bottom: 0.75rem;
+      border-radius: 0.9375rem;
+    }
+
+    .panel-title-left{
+      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--title);      
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      border-top-left-radius: 0.9375rem;
+      border-top-right-radius: 0.9375rem;
+    }
+
+    .panel-title-users{
+      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--title);      
+      border-top-left-radius: 0.9375rem;
+      border-top-right-radius: 0.9375rem;
+    }    
+
+    .panel-title-right{
+      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--title);      
+      border-top-left-radius: 0.9375rem;
+      border-top-right-radius: 0.9375rem;
+      border-bottom: 1px solid var(--border);
+    }    
+    .info-rows{
+      padding: 0.4rem 0.45rem;
+    }
+
+    .info-row{
+      display: grid;
+      grid-template-columns: 7.5rem 1fr auto;
+      gap: 0.4rem;
+      align-items: center;
+      padding: 0.2rem 0;
+    }
+
+    .label{
+      color: var(--muted);
+      font-size: 0.625rem;
+    }
+
+    .value{
+      font-weight: 400;
+      font-size: 0.625rem;
+
+    }
+
+    .value.wrap{
+      font-weight: 400;
+    }
+
+    .btn{
+      border: 1px solid var(--border);
+      background: var(--btn);
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.45rem;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 0.8rem;
+      box-shadow: 0 6px 8px rgba(0,0,0,.18);
+    }
+
+    .btn:active{
+      transform: translateY(1px); 
+    }
+
+    .btn.primary{
+      padding: 0.55rem 1.375rem;
+      color: var(--white);
+    }
+
+    .btn:hover{
+      box-shadow: 0 1px 2px rgba(0,0,0,.12);
+      transition: transform .08s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;            
+    }
+
+    .fields{
+      border: 1px solid var(--border);
+      background: var(--bg);
+      padding: 0.2rem 0.4rem;
+      border-radius: 0.45rem;
+      cursor: pointer;
+      font-weight: 400;
+      font-size: 0.625rem;
+      box-shadow: 0 2px 4px rgba(109, 109, 109, 0.277);
+    }
+
+    .fields:active{ transform: translateY(1px); }
+
+    .fields.primary{
+      padding: 0.55rem 1.375rem;
+      color: var(--title);
+    }
+    
+    .fields:hover{
+      box-shadow: 0 1px 2px rgba(109, 109, 109, 0.277);
+    }
+
+    .table-wrap{
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      height: 5.9rem;
+      overflow: auto;
+      padding-left: 3px;
+      margin-bottom: 0.7rem;
+    }
+
+    .table{
+      width: 98%;
+      border-collapse: collapse;
+      font-size: 0.6rem;
+    }
+
+    .table thead th{
+      position: sticky;
+      top: 0;
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 0.3rem;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    .table tbody td{
+      border-bottom: 1px solid #e8e8e8;
+      padding: 0.3rem 0.5rem;
+    }
+
+    .table tbody tr{
+      cursor: pointer;
+    }
+
+    .table tbody tr:hover{
+      background: #f5f9ff;
+    }
+
+    .table tbody tr.selected{
+      outline: 2px solid var(--blue);
+      outline-offset: -2px;
+      background: #f0f6ff;
+    }
+
+    .details{
+      padding: 0.4rem 0.45rem;
+    }
+
+    .detail-row{
+      display: grid;
+      grid-template-columns: 7.5rem 1fr auto;
+      gap: 0.4rem;
+      align-items: center;
+      padding: 0.2rem 0;
+    }
+
+    .field{
+      width: 100%;
+      font-size: 0.625rem;
+      font-weight: 400;      
+    }
+
+    .footer-tag{          
+      font-weight: 600;
+      color: var(--title);
+      font-size: 0.625rem;
+      text-align: right;
+      font-style: italic;
+      padding-right: 0.5rem;
+     }
+
+    .toast{
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 0.45rem;
+      box-shadow: 0 2px 4px rgba(109, 109, 109, 0.277);      
+      position: fixed;
+      left: 30%;
+      bottom: 50%;
+      transform: translateX(-50%);
+      color: var(--title);
+      padding: 0.625rem 0.875rem;
+      border-radius: 0.625rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .10s ease;
+      font-size: 0.7rem;
+    }
+    .toast.show{ opacity: 0.95; }
+
+    @media (max-width: 980px){
+      .app{ grid-template-columns: 1fr; }
+      #emailInput{ height: 40vh; }
+    }
+  </style>
+
+</head>
+<body>
+  <div class="window">
+    <header class="app-header">
+      <div class="app-logo">
+        <h1 class="app-title">ParseInbox</h1>
+      </div>
+      <p class="app-subtitle">Extract and organize email content with precision</p>
+    </header>
+
+    <div class="app">
+      <!-- LEFT -->
+      <section class="left">
+        <div class="panel-title-left">Paste Email Content:</div>
+        <div class="box">          
+          <textarea id="emailInput" spellcheck="false" placeholder="Paste the email content here..."></textarea>
+          <div class="left-actions">
+            <button id="extractBtn" class="btn primary">Extract Data</button>
+          </div>         
+        </div>
+      </section>
+ 
+      <!-- RIGHT -->
+      <section class="right">
+
+        <!-- Users -->
+        <div class="panel">
+          <div class="panel-title-users">Users</div>
+          <div class="table-wrap" role="region" aria-label="Users table" tabindex="0">
+            <table class="table" id="usersTable">
+              <thead>
+                <tr>
+                  <th style="width: 22%;">First Name</th>
+                  <th style="width: 22%;">Last Name</th>
+                  <th style="width: 36%;">Email</th>
+                  <th style="width: 20%;">Phone</th>
+                </tr>
+              </thead>
+              <tbody id="usersTbody">
+                <!-- injected -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title-right">User Details</div>
+
+          <div class="details">
+            <div class="detail-row">
+              <button class="fields copy" data-copy-target="udFirstName">First Name</button>
+              <input id="udFirstName" class="field" readonly />              
+            </div>
+
+            <div class="detail-row">
+              <button class="fields copy" data-copy-target="udLastName">Last Name</button>
+              <input id="udLastName" class="field" readonly />              
+            </div>
+
+            <div class="detail-row">
+              <button class="fields copy" data-copy-target="udEmail">Email</button>
+              <input id="udEmail" class="field" readonly />              
+            </div>
+
+            <div class="detail-row">
+              <button class="fields copy" data-copy-target="udPhone">Phone</button>
+              <input id="udPhone" class="field" readonly />              
+            </div>
+          </div>
+        </div>
+        
+
+        <!-- General Info -->
+        <div class="panel">
+          <div class="panel-title-right">General Information</div>
+          
+          <div class="info-rows">
+
+            <div class="info-row">
+              <button class="fields copy" data-copy-target="giClientName">Client Name</button>
+              <div id="giClientName" class="value"></div>
+            </div>
+
+            <div class="info-row">
+              <button class="fields copy" data-copy-target="giContractName">Contract Name</button>
+              <div id="giContractName" class="value"></div>              
+            </div>
+
+            <div class="info-row">
+              <button class="fields copy" data-copy-target="giContractId">Contract ID</button>
+              <div id="giContractId" class="value"></div>              
+            </div>
+
+            <div class="info-row">
+              <button class="fields copy" data-copy-target="giAccessLevel">Access Level</button>
+              <div id="giAccessLevel" class="value wrap"></div>              
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </div>
+    <div class="footer-tag">msantosuk</div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+  </div>
+
+  <script>
+    const emailInput = document.getElementById("emailInput");
+    const extractBtn = document.getElementById("extractBtn");
+
+    const gi = {
+      requestorEmail: document.getElementById("giRequestorEmail"),
+      clientName: document.getElementById("giClientName"),
+      contractName: document.getElementById("giContractName"),
+      contractId: document.getElementById("giContractId"),
+      accessLevel: document.getElementById("giAccessLevel"),
+    };
+
+    const ud = {
+      fullName: document.getElementById("udFullName"),
+      firstName: document.getElementById("udFirstName"),
+      lastName: document.getElementById("udLastName"),
+      email: document.getElementById("udEmail"),
+      phone: document.getElementById("udPhone"),
+    };
+
+    const usersTbody = document.getElementById("usersTbody");
+    const toastEl = document.getElementById("toast");
+
+    let currentUsers = [];
+    let selectedIndex = -1;
+
+    const LABEL_MATCHERS = [
+      { key: "requestorEmail", re: /^\s*requestor\s*email\s*:\s*(.*)\s*$/i },
+      { key: "clientName", re: /^\s*client\s*name\s*:\s*(.*)\s*$/i },
+      { key: "userFullName", re: /^\s*user\s*full\s*name\s*:\s*(.*)\s*$/i },
+      { key: "userEmailAddress", re: /^\s*user\s*email\s*address\s*:\s*(.*)\s*$/i },
+      { key: "userPhoneNumber", re: /^\s*user\s*phone\s*number\s*:\s*(.*)\s*$/i },
+      { key: "companyDomain", re: /^\s*company\s*domain\s*:\s*(.*)\s*$/i },
+      { key: "accessLevel", re: /^\s*which\s*level\s*does\s*the\s*user\s*need\s*access\s*to\?\s*:\s*(.*)\s*$/i },
+      { key: "contractName", re: /^\s*contract\s*name\s*:\s*(.*)\s*$/i },
+      { key: "contractId", re: /^\s*contract\s*id\s*:\s*(.*)\s*$/i },
+    ];
+
+    function normalizeLines(raw) {
+      return raw
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .split("\n")
+        .map(l => l.trim())
+        .filter(l => l.length > 0);
+    }
+
+    function parseToSections(raw) {
+      const lines = normalizeLines(raw);
+      const sections = {};
+      let currentKey = null;
+
+      for (const line of lines) {
+        let matched = false;
+
+        for (const m of LABEL_MATCHERS) {
+          const mm = line.match(m.re);
+          if (mm) {
+            matched = true;
+            currentKey = m.key;
+            if (!sections[currentKey]) sections[currentKey] = [];
+            const rest = (mm[1] || "").trim();
+            if (rest) sections[currentKey].push(rest);
+            break;
+          }
+        }
+
+        if (!matched && currentKey) {
+          sections[currentKey].push(line);
+        }
+      }
+
+      return sections;
+    }
+
+    function firstEmailFrom(text) {
+      const m = (text || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
+      return m ? m[0].trim() : "";
+    }
+
+    function allEmailsFrom(text) {
+      const matches = (text || "").match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/gi);
+      return matches ? matches.map(x => x.trim()) : [];
+    }
+
+    function allPhonesFrom(text) {
+      // Only digits sequences >= 8 (good for UK/mobile etc.)
+      const matches = (text || "").match(/\b\d{8,}\b/g);
+      return matches ? matches.map(x => x.trim()) : [];
+    }
+
+    function namesFrom(sectionLines) {
+      if (!sectionLines || sectionLines.length === 0) return [];
+      // Each line is typically one full name (First Last) – keep as-is
+      return sectionLines
+        .map(x => x.trim())
+        .filter(Boolean);
+    }
+
+    function splitFirstLast(fullName) {
+      const parts = (fullName || "").trim().split(/\s+/).filter(Boolean);
+      if (parts.length === 0) return { first: "", last: "" };
+      if (parts.length === 1) return { first: parts[0], last: "" };
+      return { first: parts[0], last: parts[parts.length - 1] };
+    }
+
+    function parseEmailContent(raw) {
+      const sections = parseToSections(raw);
+
+      const requestorEmail = firstEmailFrom((sections.requestorEmail || []).join(" "));
+      const clientName = (sections.clientName || []).join(" ").trim();
+
+      const accessLevel = (sections.accessLevel || []).join(" ").trim();
+
+      const contractNameRaw = (sections.contractName || []).join(" ").trim();
+      const contractIdRaw = (sections.contractId || []).join(" ").trim();
+
+      const contractName = contractNameRaw ? contractNameRaw : "N/A";
+      const contractId = contractIdRaw ? contractIdRaw : "N/A";
+
+      const fullNames = namesFrom(sections.userFullName || []);
+      const emails = allEmailsFrom((sections.userEmailAddress || []).join(" "));
+      const phones = allPhonesFrom((sections.userPhoneNumber || []).join(" "));
+
+      const count = Math.max(fullNames.length, emails.length, phones.length, 0);
+      const users = [];
+
+      for (let i = 0; i < count; i++) {
+        const fullName = fullNames[i] || "";
+        const { first, last } = splitFirstLast(fullName);
+
+        users.push({
+          fullName,
+          firstName: first,
+          lastName: last,
+          email: emails[i] || "",
+          phone: phones[i] || "",
+        });
+      }
+
+      return {
+        general: {
+          requestorEmail,
+          clientName,
+          contractName,
+          contractId,
+          accessLevel,
+        },
+        users,
+      };
+    }
+
+    function setText(el, text) {
+      if (!el) return;
+      el.textContent = (text ?? "").toString();
+    }
+
+    function setInput(el, text) {
+      if (!el) return;
+      el.value = (text ?? "").toString();
+    }
+
+    function renderGeneralInfo(general) {
+      setText(gi.requestorEmail, general.requestorEmail || "");
+      setText(gi.clientName, general.clientName || "");
+      setText(gi.contractName, general.contractName || "N/A");
+      setText(gi.contractId, general.contractId || "N/A");
+      setText(gi.accessLevel, general.accessLevel || "");
+    }
+
+    function clearUsersUI() {
+      usersTbody.innerHTML = "";
+      setInput(ud.fullName, "");
+      setInput(ud.firstName, "");
+      setInput(ud.lastName, "");
+      setInput(ud.email, "");
+      setInput(ud.phone, "");
+      selectedIndex = -1;
+    }
+
+    function renderUsersTable(users) {
+      usersTbody.innerHTML = "";
+
+      if (!users || users.length === 0) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `<td colspan="4" style="padding:0.625rem;color:#777;">No users found</td>`;
+        usersTbody.appendChild(tr);
+        return;
+      }
+
+      users.forEach((u, idx) => {
+        const tr = document.createElement("tr");
+        tr.dataset.index = String(idx);
+        tr.innerHTML = `
+          <td>${escapeHtml(u.firstName)}</td>
+          <td>${escapeHtml(u.lastName)}</td>
+          <td>${escapeHtml(u.email)}</td>
+          <td>${escapeHtml(u.phone)}</td>
+        `;
+        usersTbody.appendChild(tr);
+      });
+    }
+
+    function selectUser(index) {
+      if (!currentUsers || currentUsers.length === 0) return;
+      if (index < 0 || index >= currentUsers.length) return;
+
+      selectedIndex = index;
+
+      [...usersTbody.querySelectorAll("tr")].forEach(tr => tr.classList.remove("selected"));
+      const row = usersTbody.querySelector(`tr[data-index="${index}"]`);
+      if (row) row.classList.add("selected");
+
+      const u = currentUsers[index];
+
+      setInput(ud.fullName, u.fullName || "");
+      setInput(ud.firstName, u.firstName || "");
+      setInput(ud.lastName, u.lastName || "");
+      setInput(ud.email, u.email || "");
+      setInput(ud.phone, u.phone || "");
+    }
+
+    function escapeHtml(str) {
+      return (str ?? "").toString()
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function showToast(msg) {
+      toastEl.textContent = msg;
+      toastEl.classList.add("show");
+      window.clearTimeout(showToast._t);
+      showToast._t = window.setTimeout(() => toastEl.classList.remove("show"), 1200);
+    }
+
+    async function copyText(text) {
+      const value = (text ?? "").toString();
+
+      // Try modern clipboard API first (may fail on file:// depending on browser policy)
+      try {
+        await navigator.clipboard.writeText(value);
+        return true;
+      } catch {
+        // Fallback works well for local file usage
+        try {
+          const ta = document.createElement("textarea");
+          ta.value = value;
+          ta.setAttribute("readonly", "");
+          ta.style.position = "fixed";
+          ta.style.left = "-9990.55rem";
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand("copy");
+          document.body.removeChild(ta);
+          return ok;
+        } catch {
+          return false;
+        }
+      }
+    }
+
+    function getCopyTargetValue(targetId) {
+      const el = document.getElementById(targetId);
+      if (!el) return "";
+
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") return el.value;
+      return el.textContent;
+    }
+
+    /* Events */
+
+    extractBtn.addEventListener("click", () => {
+      const raw = emailInput.value || "";
+      if (!raw.trim()) {
+        clearUsersUI();
+        renderGeneralInfo({
+          requestorEmail: "",
+          clientName: "",
+          contractName: "N/A",
+          contractId: "N/A",
+          accessLevel: "",
+        });
+        showToast("Paste an email first");
+        return;
+      }
+
+      const result = parseEmailContent(raw);
+      currentUsers = result.users;
+
+      renderGeneralInfo(result.general);
+      renderUsersTable(currentUsers);
+
+      // auto-select first user
+      if (currentUsers.length > 0) selectUser(0);
+      else clearUsersUI();
+
+      showToast("Extracted");
+    });
+
+    usersTbody.addEventListener("click", (e) => {
+      const tr = e.target.closest("tr");
+      if (!tr || !tr.dataset.index) return;
+      const idx = Number(tr.dataset.index);
+      selectUser(idx);
+    });
+
+    document.addEventListener("click", async (e) => {
+      const btn = e.target.closest(".copy");
+      if (!btn) return;
+
+      const targetId = btn.getAttribute("data-copy-target");
+      const val = getCopyTargetValue(targetId);
+
+      const ok = await copyText(val);
+      showToast(ok ? "Copied" : "Copy failed");
+    });
+  </script>
+</body>
+</html>
