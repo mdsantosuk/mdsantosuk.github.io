@@ -4,255 +4,160 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>ParseInbox - Focuses on parsing inbox messages for relevant details</title>
+  <link rel="stylesheet" href="styles.css" />
   <style>
     :root{
-      --bg: #eceff6;
-      --panel: #ffffff;
-      --border: #e6e2e2;
+      --bg: #efefef;
+      --panel: #f7f7f7;
+      --border: #cfcfcf;
       --text: #111;
       --muted: #555;
       --white: #fff;
-      --blue: #7e9bf9;
-      --title: #545171;
-      --input: #fcfcff;
-      --btn: #545171;
+      --blue: #2c5cff;
     }
 
-    *{ 
-      box-sizing: border-box; 
-      font-family: Segoe UI, Tahoma, Arial, sans-serif; 
-    }
-    
-    body{ 
-      margin:0; 
-      background: var(--bg); 
-      color: var(--text); 
-    }
+    *{ box-sizing: border-box; font-family: Segoe UI, Tahoma, Arial, sans-serif; }
+    body{ margin:0; background: var(--bg); color: var(--text); }
 
     .window{
-      width: min(1200px, 90vw);
-      margin: 0.875rem auto;
-      padding: 0.5rem;
-    }
-
-    input {
-      background: var(--panel);
-      border: none;
+      width: min(1400px, 98vw);
+      margin: 14px auto;
+      padding: 8px;
     }
 
     .app{
       display: grid;
       grid-template-columns: 1.1fr 1fr;
-      gap: 0.875rem;
+      gap: 14px;
       align-items: start;
     }
 
-    header {
-      display: block;
-      unicode-bidi: isolate;
-    }
-
-    .app-header {
-      text-align: center;
-      margin-bottom: 0.5rem;
-      padding: 0;
-    }
-
-    .app-subtitle {
-      font-size: 1rem;
-      color: var(--muted);
-    }
-
-    p.app-subtitle{
-      margin: 0;
-    }
-
-    .app-title {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--title);        
-    }  
-
-    h1.app-title {
-      margin: 0;
-    }
-
-    .left, .right{ 
-      min-height: 80vh; 
-    }
+    .left, .right{ min-height: 86vh; }
 
     .left{
       background: transparent;
-      padding: 0.45rem;
-      border-radius: 0.9375rem;
+      padding: 6px;
     }
 
     .left h2{
-      margin: 0.45rem 0 0.625rem;
+      margin: 6px 0 10px;
       text-align: center;
-      font-size: 0.9375rem;
-      font-weight: 500;
-    }
-
-    .box{
-      border-bottom-left-radius: 0.9375rem;
-      border-bottom-right-radius: 0.9375rem;
-      background: var(--white);
-      padding: 0.625rem;
-      border: 1px solid var(--border);
+      font-size: 20px;
+      font-weight: 600;
     }
 
     #emailInput{
       width: 100%;
-      height: calc(75vh - 6.85rem);
+      height: calc(86vh - 110px);
       border: 1px solid var(--border);
-      background: var(--input);
-      padding: 0.625rem;
+      background: var(--white);
+      padding: 10px;
       resize: none;
       outline: none;
-      font-size: 0.75rem;
+      font-size: 14px;
       line-height: 1.35;
       white-space: pre-wrap;
-      border-radius: 0.75rem;
     }
 
     .left-actions{
       display: flex;
       justify-content: center;
-      margin-top: 0.75rem;
+      margin-top: 12px;
     }
 
     .right{
-      padding: 0.45rem;
+      padding: 6px;
       position: relative;
     }
 
     .panel{
       border: 1px solid var(--border);
       background: var(--panel);
-      margin-bottom: 0.75rem;
-      border-radius: 0.9375rem;
+      margin-bottom: 12px;
     }
 
-    .panel-title-left{
-      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
+    .panel-title{
+      padding: 10px 12px;
       font-weight: 600;
-      color: var(--white);
-      background: var(--title);      
-      border-top: 1px solid var(--border);
-      border-left: 1px solid var(--border);
-      border-right: 1px solid var(--border);
-      border-top-left-radius: 0.9375rem;
-      border-top-right-radius: 0.9375rem;
-    }
-
-    .panel-title-users{
-      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--title);      
-      border-top-left-radius: 0.9375rem;
-      border-top-right-radius: 0.9375rem;
-    }    
-
-    .panel-title-right{
-      padding: 0.4rem 0.625rem 0.625rem 0.625rem;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--title);      
-      border-top-left-radius: 0.9375rem;
-      border-top-right-radius: 0.9375rem;
       border-bottom: 1px solid var(--border);
-    }    
+    }
+
     .info-rows{
-      padding: 0.4rem 0.45rem;
+      padding: 10px 12px;
     }
 
     .info-row{
       display: grid;
-      grid-template-columns: 6rem 1fr auto;
-      gap: 0.4rem;
+      grid-template-columns: 140px 1fr;
+      gap: 10px;
       align-items: center;
-      padding: 0.2rem 0;
-      text-align: left;
+      padding: 6px 0;
     }
 
     .label{
       color: var(--muted);
-      font-size: 0.625rem;
+      font-size: 13px;
+    }
+
+    .label-btn{
+      appearance: none;
+      background: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      color: var(--muted);
+      font-size: 13px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .label-btn:hover{
+      text-decoration: underline;
+    }
+
+    .label-btn:focus-visible{
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
     }
 
     .value{
-      font-weight: 400;
-      font-size: 0.625rem;
-
+      font-weight: 600;
+      font-size: 14px;
+      min-height: 18px;
     }
 
     .value.wrap{
-      font-weight: 400;
+      font-weight: 600;
+      line-height: 1.25;
     }
 
     .btn{
       border: 1px solid var(--border);
-      background: var(--btn);
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.45rem;
+      background: var(--white);
+      padding: 7px 10px;
+      border-radius: 6px;
       cursor: pointer;
-      font-weight: 700;
-      font-size: 0.8rem;
-      box-shadow: 0 6px 8px rgba(0,0,0,.18);
+      font-weight: 600;
     }
 
-    .btn:active{
-      transform: translateY(1px); 
-    }
+    .btn:active{ transform: translateY(1px); }
 
     .btn.primary{
-      padding: 0.55rem 1.375rem;
-      color: var(--white);
-    }
-
-    .btn:hover{
-      box-shadow: 0 1px 2px rgba(0,0,0,.12);
-      transition: transform .08s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;            
-    }
-
-    .fields{
-      border: 1px solid var(--border);
-      background: var(--bg);
-      padding: 0.2rem 0.4rem;
-      border-radius: 0.45rem;
-      cursor: pointer;
-      font-weight: 400;
-      font-size: 0.625rem;
-      box-shadow: 0 2px 4px rgba(109, 109, 109, 0.277);
-      text-align: left;
-    }
-
-    .fields:active{ transform: translateY(1px); }
-
-    .fields.primary{
-      padding: 0.55rem 1.375rem;
-      color: var(--title);
-    }
-    
-    .fields:hover{
-      box-shadow: 0 1px 2px rgba(109, 109, 109, 0.277);
+      padding: 9px 22px;
     }
 
     .table-wrap{
       background: var(--white);
       border-top: 1px solid var(--border);
-      height: 5.9rem;
+      max-height: 260px;
       overflow: auto;
-      padding-left: 3px;
-      margin-bottom: 0.7rem;
     }
 
     .table{
-      width: 98%;
+      width: 100%;
       border-collapse: collapse;
-      font-size: 0.6rem;
+      font-size: 14px;
     }
 
     .table thead th{
@@ -260,14 +165,14 @@
       top: 0;
       background: #ffffff;
       border-bottom: 1px solid var(--border);
-      padding: 0.3rem;
+      padding: 8px;
       text-align: left;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .table tbody td{
       border-bottom: 1px solid #e8e8e8;
-      padding: 0.3rem 0.5rem;
+      padding: 7px 8px;
     }
 
     .table tbody tr{
@@ -285,48 +190,48 @@
     }
 
     .details{
-      padding: 0.4rem 0.45rem;
+      padding: 10px 12px;
     }
 
     .detail-row{
       display: grid;
-      grid-template-columns: 6rem 1fr auto;
-      gap: 0.4rem;
+      grid-template-columns: 120px 1fr;
+      gap: 10px;
       align-items: center;
-      padding: 0.2rem 0;      
+      padding: 7px 0;
     }
 
     .field{
       width: 100%;
-      font-size: 0.625rem;
-      font-weight: 400;      
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 7px 8px;
+      border-radius: 4px;
+      font-size: 14px;
     }
 
-    .footer-tag{          
+    .footer-tag{
+      position: absolute;
+      right: 10px;
+      bottom: 6px;
       font-weight: 600;
-      color: var(--title);
-      font-size: 0.625rem;
-      text-align: right;
-      font-style: italic;
-      padding-right: 0.5rem;
-     }
+      color: #666;
+      font-size: 12px;
+    }
 
     .toast{
-      border: 1px solid var(--border);
-      background: var(--bg);
-      border-radius: 0.45rem;
-      box-shadow: 0 2px 4px rgba(109, 109, 109, 0.277);      
       position: fixed;
-      left: 30%;
-      bottom: 50%;
+      left: 50%;
+      bottom: 18px;
       transform: translateX(-50%);
-      color: var(--title);
-      padding: 0.625rem 0.875rem;
-      border-radius: 0.625rem;
+      background: #111;
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .10s ease;
-      font-size: 0.7rem;
+      transition: opacity .18s ease;
+      font-size: 13px;
     }
     .toast.show{ opacity: 0.95; }
 
@@ -334,36 +239,29 @@
       .app{ grid-template-columns: 1fr; }
       #emailInput{ height: 40vh; }
     }
-  </style>
 
+  </style>
 </head>
 <body>
   <div class="window">
-    <header class="app-header">
-      <div class="app-logo">
-        <h1 class="app-title">ParseInbox</h1>
-      </div>
-      <p class="app-subtitle">Extract and organize email content with precision</p>
-    </header>
-
     <div class="app">
       <!-- LEFT -->
       <section class="left">
-        <div class="panel-title-left">Paste Email Content:</div>
-        <div class="box">          
-          <textarea id="emailInput" spellcheck="false" placeholder="Paste the email content here..."></textarea>
-          <div class="left-actions">
-            <button id="extractBtn" class="btn primary">Extract Data</button>
-          </div>         
+        <h2>Paste Email Content:</h2>
+        <textarea id="emailInput" spellcheck="false" placeholder="Paste the email content here..."></textarea>
+
+        <div class="left-actions">
+          <button id="extractBtn" class="btn primary">Extract</button>
         </div>
       </section>
- 
+
       <!-- RIGHT -->
       <section class="right">
 
         <!-- Users -->
         <div class="panel">
-          <div class="panel-title-users">Users</div>
+          <div class="panel-title">Users</div>
+
           <div class="table-wrap" role="region" aria-label="Users table" tabindex="0">
             <table class="table" id="usersTable">
               <thead>
@@ -381,64 +279,74 @@
           </div>
         </div>
 
+        <!-- General Info -->
         <div class="panel">
-          <div class="panel-title-right">User Details</div>
+          <div class="panel-title">General Information</div>
+
+          <div class="info-rows">
+            <div class="info-row">
+              <button class="label-btn" type="button" data-copy-target="giRequestorEmail" title="Click to copy">Requestor Email</button>
+              <div id="giRequestorEmail" class="value"></div>
+</div>
+
+            <div class="info-row">
+              <button class="label-btn" type="button" data-copy-target="giClientName" title="Click to copy">Client Name</button>
+              <div id="giClientName" class="value"></div>
+</div>
+
+            <div class="info-row">
+              <button class="label-btn" type="button" data-copy-target="giContractName" title="Click to copy">Contract Name</button>
+              <div id="giContractName" class="value"></div>
+</div>
+
+            <div class="info-row">
+              <button class="label-btn" type="button" data-copy-target="giContractId" title="Click to copy">Contract ID</button>
+              <div id="giContractId" class="value"></div>
+</div>
+
+            <div class="info-row">
+              <button class="label-btn" type="button" data-copy-target="giAccessLevel" title="Click to copy">Access Level</button>
+              <div id="giAccessLevel" class="value wrap"></div>
+</div>
+          </div>
+        </div>
+
+
+        <!-- User Details -->
+        <div class="panel">
+          <div class="panel-title">User Details</div>
 
           <div class="details">
             <div class="detail-row">
-              <button class="fields copy" data-copy-target="udFirstName">First Name</button>
-              <input id="udFirstName" class="field" readonly />              
-            </div>
+              <button class="label-btn" type="button" data-copy-target="udFullName" title="Click to copy">Full Name</button>
+              <input id="udFullName" class="field" readonly />
+</div>
 
             <div class="detail-row">
-              <button class="fields copy" data-copy-target="udLastName">Last Name</button>
-              <input id="udLastName" class="field" readonly />              
-            </div>
+              <button class="label-btn" type="button" data-copy-target="udFirstName" title="Click to copy">First Name</button>
+              <input id="udFirstName" class="field" readonly />
+</div>
 
             <div class="detail-row">
-              <button class="fields copy" data-copy-target="udEmail">Email</button>
-              <input id="udEmail" class="field" readonly />              
-            </div>
+              <button class="label-btn" type="button" data-copy-target="udLastName" title="Click to copy">Last Name</button>
+              <input id="udLastName" class="field" readonly />
+</div>
 
             <div class="detail-row">
-              <button class="fields copy" data-copy-target="udPhone">Phone</button>
-              <input id="udPhone" class="field" readonly />              
-            </div>
+              <button class="label-btn" type="button" data-copy-target="udEmail" title="Click to copy">Email</button>
+              <input id="udEmail" class="field" readonly />
+</div>
+
+            <div class="detail-row">
+              <button class="label-btn" type="button" data-copy-target="udPhone" title="Click to copy">Phone</button>
+              <input id="udPhone" class="field" readonly />
+</div>
           </div>
         </div>
-        
 
-        <!-- General Info -->
-        <div class="panel">
-          <div class="panel-title-right">General Information</div>
-          
-          <div class="info-rows">
-
-            <div class="info-row">
-              <button class="fields copy" data-copy-target="giClientName">Client Name</button>
-              <div id="giClientName" class="value"></div>
-            </div>
-
-            <div class="info-row">
-              <button class="fields copy" data-copy-target="giContractName">Contract Name</button>
-              <div id="giContractName" class="value"></div>              
-            </div>
-
-            <div class="info-row">
-              <button class="fields copy" data-copy-target="giContractId">Contract ID</button>
-              <div id="giContractId" class="value"></div>              
-            </div>
-
-            <div class="info-row">
-              <button class="fields copy" data-copy-target="giAccessLevel">Access Level</button>
-              <div id="giAccessLevel" class="value wrap"></div>              
-            </div>
-          </div>
-        </div>
+        <div class="footer-tag">msantosuk</div>
       </section>
-      
     </div>
-    <div class="footer-tag">msantosuk</div>
 
     <div id="toast" class="toast" aria-live="polite"></div>
   </div>
@@ -596,12 +504,10 @@
     }
 
     function setText(el, text) {
-      if (!el) return;
       el.textContent = (text ?? "").toString();
     }
 
     function setInput(el, text) {
-      if (!el) return;
       el.value = (text ?? "").toString();
     }
 
@@ -628,7 +534,7 @@
 
       if (!users || users.length === 0) {
         const tr = document.createElement("tr");
-        tr.innerHTML = `<td colspan="4" style="padding:0.625rem;color:#777;">No users found</td>`;
+        tr.innerHTML = `<td colspan="4" style="padding:10px;color:#777;">No users found</td>`;
         usersTbody.appendChild(tr);
         return;
       }
@@ -695,7 +601,7 @@
           ta.value = value;
           ta.setAttribute("readonly", "");
           ta.style.position = "fixed";
-          ta.style.left = "-9990.55rem";
+          ta.style.left = "-9999px";
           document.body.appendChild(ta);
           ta.select();
           const ok = document.execCommand("copy");
@@ -753,7 +659,7 @@
     });
 
     document.addEventListener("click", async (e) => {
-      const btn = e.target.closest(".copy");
+      const btn = e.target.closest(".label-btn");
       if (!btn) return;
 
       const targetId = btn.getAttribute("data-copy-target");
