@@ -6,7 +6,7 @@
   <title>ParseInbox - Focuses on parsing inbox messages for relevant details</title>
   <style>
     :root{
-      --bg: #eceff6;
+      --bg: #dce3f3;
       --panel: #ffffff;
       --border: #e6e2e2;
       --text: #111;
@@ -42,7 +42,7 @@
 
     .app{
       display: grid;
-      grid-template-columns: 1.1fr 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 0.875rem;
       align-items: start;
     }
@@ -368,10 +368,10 @@
             <table class="table" id="usersTable">
               <thead>
                 <tr>
-                  <th style="width: 20%;">First Name</th>
-                  <th style="width: 20%;">Last Name</th>
-                  <th style="width: 45%;">Email</th>
-                  <th style="width: 15%;">Phone</th>
+                  <th style="width: 15%;">First Name</th>
+                  <th style="width: 30%;">Last Name</th>
+                  <th style="width: 30%;">Email</th>
+                  <th style="width: 25%;">Phone</th>
                 </tr>
               </thead>
               <tbody id="usersTbody">
@@ -529,19 +529,42 @@
     }
 
     function allPhonesFrom(text) {
-      // Only digits sequences >= 8 (good for UK/mobile etc.)
-      const matches = (text || "").match(/\b\d{8,}\b/g);
-      return matches ? matches.map(x => x.trim()) : [];
+      if (!text) return [];
+      
+      // Match phone numbers with optional + prefix, spaces, and groups of digits
+      // Preserves original formatting including + and spaces
+      const lines = text.split('\n');
+      const phones = [];
+      
+      for (const line of lines) {
+        const trimmed = line.trim();
+        // Match lines that start with + or digit and contain at least one digit
+        if (/^[\+\d]/.test(trimmed) && /\d/.test(trimmed)) {
+          // Keep the original format with + and spaces
+          // Just ensure it has at least 8 digits total
+          const digitCount = (trimmed.match(/\d/g) || []).length;
+          if (digitCount >= 8) {
+            phones.push(trimmed);
+          }
+        }
+      }
+      
+      // Fallback: if no phones found with line-based approach, try old method
+      if (phones.length === 0) {
+        const matches = text.match(/\b\d{8,}\b/g);
+        return matches ? matches.map(x => x.trim()) : [];
+      }
+      
+      return phones;
     }
 
     function namesFrom(sectionLines) {
       if (!sectionLines || sectionLines.length === 0) return [];
-      // Each line is typically one full name (First Last) – keep as-is
+      // Each line is typically one full name (First Last) — keep as-is
       return sectionLines
         .map(x => x.trim())
         .filter(Boolean);
     }
-    // *********Updated, new version added middle names.************
 
     function splitFirstLast(fullName) {
       const parts = (fullName || "").trim().split(/\s+/).filter(Boolean);
@@ -552,8 +575,6 @@
       const lastName = parts.slice(1).join(" ");
       return { first: firstName, last: lastName };
     }
-
-    // ************ending here the update*************************
 
     function parseEmailContent(raw) {
       const sections = parseToSections(raw);
@@ -571,7 +592,7 @@
 
       const fullNames = namesFrom(sections.userFullName || []);
       const emails = allEmailsFrom((sections.userEmailAddress || []).join(" "));
-      const phones = allPhonesFrom((sections.userPhoneNumber || []).join(" "));
+      const phones = allPhonesFrom((sections.userPhoneNumber || []).join("\n"));
 
       const count = Math.max(fullNames.length, emails.length, phones.length, 0);
       const users = [];
